@@ -101,13 +101,15 @@
 .chats_section {
     width: 100%;
     height: calc(100% - 205px); 
+
+    overflow: auto;
 }
 
 .chat {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #b1b1b1;
+    border-bottom: 1px solid #e9ebeb;
 }
 
 .side_right {
@@ -118,6 +120,8 @@
 .single_chat {
     width: 100%;
     height: calc(100% - 145px);
+
+    overflow: auto;
 
     background-image: url(../img/mine.jpg);
 }
