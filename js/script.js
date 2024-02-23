@@ -169,18 +169,22 @@ createApp({
                     ],
                 }
             ],
-            
-            activeIndex: 0,
-            
+
+            activeContact: {},
+
         }
     },
     methods: {
 
-        changeChat(index) {
+        changeActiveContact(index) {
+            // this.activeContactIndex = index;
+            this.activeContact = this.contacts[index]
+        },
 
-            this.activeIndex = index
-            console.log(this.activeIndex)
-        }
+    },
+    mounted() {
 
-    }
+        this.activeContact = this.contacts[0]
+    
+    },
 }).mount('#app');
