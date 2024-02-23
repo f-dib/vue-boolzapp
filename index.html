@@ -58,7 +58,7 @@
                     </div>
                     
                     <div class="chats_section">
-                        <div v-for="(currentChat, index) in contacts" class="chat px-3 py-2">
+                        <div v-for="(currentChat, index) in contacts" class="chat px-3 py-2" @click="changeChat(index)">
                             <div class="d-flex align-items-center gap-2">
                                 <div class="avatar"><img class="img-fluid" :src="currentChat.avatar" alt=""></div>
                                 <div>
@@ -88,7 +88,22 @@
                         </div>
                     </div>
                     
-                    <div class="single_chat"></div>
+                    <div class="single_chat p-4">
+                        <div v-for="(currentPage, index) in contacts" v-show="index == activeIndex">
+                            <div v-for="currentMessage in currentPage.messages">
+                                <div v-if="currentMessage.status === 'sent'" class="d-flex justify-content-end m-2"> 
+                                    <div class="message_send p-2">
+                                        {{ currentMessage.message }}
+                                    </div>
+                                </div>
+                                <div v-else class="d-flex m-2">
+                                    <div class="message_recived p-2">
+                                        {{ currentMessage.message }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="text_bar fa_color">
                         <div><i class="fa-regular fa-face-smile"></i></div>

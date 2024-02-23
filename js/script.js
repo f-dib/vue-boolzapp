@@ -168,9 +168,19 @@ createApp({
                         }
                     ],
                 }
-            ]
+            ],
             
+            activeIndex: 0,
             
         }
+    },
+    methods: {
+
+        changeChat(index) {
+
+            this.activeIndex = index
+            console.log(this.activeIndex)
+        }
+
     }
 }).mount('#app');

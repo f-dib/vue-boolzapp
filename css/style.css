@@ -126,6 +126,18 @@
     background-image: url(../img/mine.jpg);
 }
 
+.message_send {
+    overflow-wrap: break-word;
+    border-radius: 5px;
+    background-color: #d5f9ba;
+}
+
+.message_recived {
+    overflow-wrap: break-word;
+    border-radius: 5px;
+    background-color: white;
+}
+
 .text_bar {
     width: 100%;
     height: 70px;
