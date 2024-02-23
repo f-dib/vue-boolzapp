@@ -53,12 +53,12 @@
                     <div class="search_bar p-2">
                         <div class="input-group">
                             <span class="input-group-text bg-white px-4 fa_color" id="inputGroup-sizing-default"><i class="fa-solid fa-magnifying-glass"></i></span>
-                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <input v-model="searchChat" type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                           </div>
                     </div>
                     
                     <div class="chats_section">
-                        <div v-for="(currentChat, index) in contacts" class="chat px-3 py-2" :class="contact == activeContact ? 'active' : ''" @click="changeActiveContact(index)">
+                        <div v-for="(currentChat, index) in filteredChat" class="chat px-3 py-2" :class="contact == activeContact ? 'active' : ''" @click="changeActiveContact(index)">
                             <div class="d-flex align-items-center gap-2">
                                 <div class="avatar"><img class="img-fluid" :src="currentChat.avatar" alt=""></div>
                                 <div>
@@ -91,7 +91,7 @@
                     <div class="single_chat p-4">
                         
                         <div class="container">
-                            <div v-for="currentMessage in activeContact.messages" class="message" :class="currentMessage.status">
+                            <div v-for="(currentMessage, index) in activeContact.messages" class="message" :class="currentMessage.status">
                                 <div class="text">
                                     {{ currentMessage.message }}
                                 </div>

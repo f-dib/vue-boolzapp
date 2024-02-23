@@ -171,6 +171,8 @@ createApp({
             ],
 
             activeContact: {},
+            searchChat: '',
+            // activeMessage: {},
 
             newMessage: '',
 
@@ -179,9 +181,15 @@ createApp({
     methods: {
 
         changeActiveContact(index) {
-            // this.activeContactIndex = index;
-            this.activeContact = this.contacts[index]
+
+            const indx = this.contacts.indexOf(this.filteredChat[index])
+            this.activeContact = this.contacts[indx]
+
         },
+
+        // changeActiveMessage(index) {
+        //     this.activeMessage = this.activeContact[index]
+        // },
 
         addMessage() {
 
@@ -207,4 +215,12 @@ createApp({
         this.activeContact = this.contacts[0]
     
     },
+    computed: {
+        filteredChat() {
+            return this.contacts.filter(contact => {
+
+            return contact.name.toLowerCase().includes(this.searchChat.toLowerCase())
+          });
+        }
+      }
 }).mount('#app');
