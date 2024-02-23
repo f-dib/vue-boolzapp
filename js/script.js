@@ -172,6 +172,8 @@ createApp({
 
             activeContact: {},
 
+            newMessage: '',
+
         }
     },
     methods: {
@@ -179,6 +181,24 @@ createApp({
         changeActiveContact(index) {
             // this.activeContactIndex = index;
             this.activeContact = this.contacts[index]
+        },
+
+        addMessage() {
+
+            // Add the text written inside the input field to the task list
+            this.activeContact.messages.push({date: new Date().toLocaleTimeString(),
+                                              message: this.newMessage, 
+                                              status: 'sent'}),
+
+            // I delete the contents of the input field
+            this.newMessage = "";
+
+            setTimeout(() => {
+                this.activeContact.messages.push({date: new Date().toLocaleTimeString(),
+                                                  message: "Ok", 
+                                                  status: 'received'})
+            }, 1000)
+
         },
 
     },

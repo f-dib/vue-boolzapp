@@ -93,10 +93,10 @@
                         <div class="container">
                             <div v-for="currentMessage in activeContact.messages" class="message" :class="currentMessage.status">
                                 <div class="text">
-                                    {{currentMessage.message}}
+                                    {{ currentMessage.message }}
                                 </div>
                                 <div class="time">
-                                    {{currentMessage.date}}
+                                    {{ currentMessage.date }}
                                 </div>
                             </div>
                         </div>                
@@ -104,7 +104,7 @@
                     
                     <div class="text_bar fa_color">
                         <div><i class="fa-regular fa-face-smile"></i></div>
-                        <input class="form-control my_w" type="text" placeholder="Scrivi un messaggio" aria-label="default input example">
+                        <input v-model="newMessage" class="form-control my_w" type="text" placeholder="Scrivi un messaggio" aria-label="default input example" @keyup.enter="addMessage">
                         <div><i class="fa-solid fa-microphone"></i></div>
                     </div>
                 
