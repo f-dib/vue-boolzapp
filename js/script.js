@@ -172,7 +172,6 @@ createApp({
 
             activeContact: {},
             searchChat: '',
-            // activeMessage: {},
 
             newMessage: '',
 
@@ -187,14 +186,17 @@ createApp({
 
         },
 
-        // changeActiveMessage(index) {
-        //     this.activeMessage = this.activeContact[index]
-        // },
+        time (data){
+
+            const hour = data.split(" ")[1]
+            return hour.split(":").slice(0, 2).join(":")
+
+        },
 
         addMessage() {
 
             // Add the text written inside the input field to the task list
-            this.activeContact.messages.push({date: new Date().toLocaleTimeString(),
+            this.activeContact.messages.push({date: new Date().toLocaleString("it-IT"),
                                               message: this.newMessage, 
                                               status: 'sent'}),
 
@@ -202,7 +204,7 @@ createApp({
             this.newMessage = "";
 
             setTimeout(() => {
-                this.activeContact.messages.push({date: new Date().toLocaleTimeString(),
+                this.activeContact.messages.push({date: new Date().toLocaleString("it-IT"),
                                                   message: "Ok", 
                                                   status: 'received'})
             }, 1000)
