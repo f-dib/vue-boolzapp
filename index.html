@@ -37,7 +37,21 @@
                         </div>
                         <div class="d-flex align-items-center gap-4 fa_color2">
                             <div><i class="fa-solid fa-circle-notch fa-lg"></i></div>
-                            <div><i class="fa-solid fa-message fa-lg"></i></div>
+                            <div>
+                                <div class="dropdown">
+                                    <button class="btn fa_color2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-message fa-lg"></i>
+                                    </button>
+                                    <ul class="dropdown-menu p-2">
+                                      <li class="text-center fw-bold">Aggiungi Contatto</li>
+                                      <li>
+                                        <div class="input-group flex-nowrap">
+                                            <input v-model="newContact" class="form-control my_w" type="text" placeholder="Scrivi un messaggio" aria-label="default input example" @keyup.enter="addContact">
+                                        </div>
+                                      </li>
+                                    </ul>
+                                </div>
+                            </div>
                             <div><i class="fa-solid fa-ellipsis-vertical fa-lg"></i></div>
                         </div>
                     </div>

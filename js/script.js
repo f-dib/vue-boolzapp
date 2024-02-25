@@ -180,7 +180,9 @@ createApp({
                 "Scusa, ho avuto un contrattempo faccio tardi",
                 "That's what she said",
                 "So cosa hai fatto la scorsa estate"
-            ]
+            ],
+
+            newContact: ''
 
         }
     },
@@ -222,6 +224,24 @@ createApp({
             }
 
         },
+
+        addContact() {
+           
+            if (this.newContact.length != 0 && this.newContact.trim()){
+                this.contacts.push({name: this.newContact, 
+                                    avatar: './img/avatar_8.jpg',
+                                    visible: true,
+                                    messages: [
+                                        {
+                                            date: new Date().toLocaleString("it-IT"),
+                                            message: '',
+                                        }
+                                    ]}),
+
+                this.newContact = "";
+            }
+
+        }
 
     },
     mounted() {
