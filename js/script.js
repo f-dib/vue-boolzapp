@@ -174,6 +174,13 @@ createApp({
             searchChat: '',
 
             newMessage: '',
+            randomAnswer: [
+                "Ok",
+                "A dopo",
+                "Scusa, ho avuto un contrattempo faccio tardi",
+                "That's what she said",
+                "So cosa hai fatto la scorsa estate"
+            ]
 
         }
     },
@@ -195,19 +202,24 @@ createApp({
 
         addMessage() {
 
-            // Add the text written inside the input field to the task list
-            this.activeContact.messages.push({date: new Date().toLocaleString("it-IT"),
-                                              message: this.newMessage, 
-                                              status: 'sent'}),
-
-            // I delete the contents of the input field
-            this.newMessage = "";
-
-            setTimeout(() => {
+            if (this.newMessage.length != 0 && this.newMessage.trim()){
+                // Add the text written inside the input field
                 this.activeContact.messages.push({date: new Date().toLocaleString("it-IT"),
-                                                  message: "Ok", 
-                                                  status: 'received'})
-            }, 1000)
+                                                  message: this.newMessage, 
+                                                  status: 'sent'}),
+    
+                // I delete the contents of the input field
+                this.newMessage = "";
+    
+                setTimeout(() => {
+                    let randomNumber = Math.floor(Math.random() * this.randomAnswer.length);
+
+                    this.activeContact.messages.push({date: new Date().toLocaleString("it-IT"),
+                                                      message: this.randomAnswer[randomNumber], 
+                                                      status: 'received'})
+                }, 1000)
+
+            }
 
         },
 
