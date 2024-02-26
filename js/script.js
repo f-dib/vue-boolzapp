@@ -261,12 +261,7 @@ createApp({
                 this.contacts.push({name: this.newContact, 
                                     avatar: './img/a.jpg',
                                     visible: true,
-                                    messages: [
-                                        {
-                                            date: new Date().toLocaleString("it-IT"),
-                                            message: '',
-                                        }
-                                    ]}),
+                                    messages: []}),
 
                 this.newContact = "";
             }
