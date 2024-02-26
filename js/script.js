@@ -202,7 +202,7 @@ createApp({
 
         time (data){
 
-            const hour = data.split(" ")[1]
+            const hour = data.date.split(" ")[1]
             return hour.split(":").slice(0, 2).join(":")
 
         },
