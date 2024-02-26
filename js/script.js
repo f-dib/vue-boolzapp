@@ -275,6 +275,15 @@ createApp({
 
         },
 
+        deleteAllMessages(activeContact){
+            activeContact.messages.splice(0, activeContact.messages.length)
+        },
+
+        deleteContact(activeContact) {
+            this.contacts.splice(activeContact, 1);
+
+        }
+
     },
     mounted() {
 

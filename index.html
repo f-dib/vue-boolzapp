@@ -105,7 +105,15 @@
                         <div class="d-flex align-items-center gap-4 fa_color2">
                             <div><i class="fa-solid fa-magnifying-glass fa-lg"></i></div>
                             <div><i class="fa-solid fa-paperclip fa-lg"></i></div>
-                            <div><i class="fa-solid fa-ellipsis-vertical fa-lg"></i></div>
+                            <div class="dropdown">
+                                <button class="btn fa_color2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
+                                </button>
+                                <ul class="dropdown-menu p-1">
+                                    <li><button @click="deleteAllMessages(activeContact)" class="btn text-nowrap">Elimina Tutti i Messaggi</button></li>
+                                    <li><button @click="deleteContact(activeContact)" class="btn">Elimina Chat</button></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     
