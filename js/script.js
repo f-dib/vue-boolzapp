@@ -183,7 +183,8 @@ createApp({
                 "So cosa hai fatto la scorsa estate"
             ],
 
-            newContact: ''
+            newContact: '',
+            isLoading: true,
 
         }
     },
@@ -280,14 +281,25 @@ createApp({
         },
 
         deleteContact(activeContact) {
-            this.contacts.splice(activeContact, 1);
+            const chatIndex = this.contacts.indexOf(activeContact);
 
+            if(chatIndex > -1) {
+                this.contacts.splice(chatIndex, 1);
+                this.activeContact = {};
+            }
+            
         }
 
     },
     mounted() {
 
+        setTimeout(() => {
+            this.isLoading = false;
+          }, 2000);
+
         this.activeContact = this.contacts[0]
+
+
     
     },
     computed: {
