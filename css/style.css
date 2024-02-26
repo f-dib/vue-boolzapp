@@ -118,6 +118,11 @@
     height: 100%;
 }
 
+.my_image {
+    background-color: #e9f0f0;
+    display: flex;
+}
+
 .single_chat {
     width: 100%;
     height: calc(100% - 145px);

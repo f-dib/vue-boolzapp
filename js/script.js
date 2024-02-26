@@ -183,21 +183,20 @@ createApp({
                 "So cosa hai fatto la scorsa estate"
             ],
 
+
             newContact: '',
             isLoading: true,
+            isWelcome: true,
 
         }
     },
     methods: {
 
-        // splashPage() {
-
-        // },
-
         changeActiveContact(index) {
 
-            const indx = this.contacts.indexOf(this.filteredChat[index])
-            this.activeContact = this.contacts[indx]
+            const indx = this.contacts.indexOf(this.filteredChat[index]);
+            this.activeContact = this.contacts[indx];
+            this.isWelcome = false;
 
         },
 
@@ -299,11 +298,7 @@ createApp({
         setTimeout(() => {
             this.isLoading = false;
           }, 1000);
-
-        this.activeContact = this.contacts[0]
-
-
-    
+   
     },
     computed: {
         filteredChat() {
