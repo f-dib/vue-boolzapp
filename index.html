@@ -106,11 +106,19 @@
                         
                         <div class="container">
                             <div v-for="(currentMessage, index) in activeContact.messages" class="message" :class="currentMessage.status">
-                                <div class="text">
+                                <div class="text pe-4">
                                     {{ currentMessage.message }}
                                 </div>
                                 <div class="time">
                                     {{ time(currentMessage.date) }}
+                                </div>
+                                <div class="dropdown my_chevron">
+                                    <button class="btn fa_color2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu p-1">
+                                      <li><button @click="deleteMessage(activeContact, index)" class="btn">Elimina Messaggio</button></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>                
@@ -119,7 +127,9 @@
                     <div class="text_bar fa_color">
                         <div><i class="fa-regular fa-face-smile"></i></div>
                         <input v-model="newMessage" class="form-control my_w" type="text" placeholder="Scrivi un messaggio" aria-label="default input example" @keyup.enter="addMessage">
-                        <div><i class="fa-solid fa-microphone"></i></div>
+                        <div>
+                            <i :class="addText()" @click="addMessage"></i>
+                        </div>
                     </div>
                 
                 </section>

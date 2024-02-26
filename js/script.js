@@ -174,6 +174,7 @@ createApp({
             searchChat: '',
 
             newMessage: '',
+            isWriting: false,
             randomAnswer: [
                 "Ok",
                 "A dopo",
@@ -187,6 +188,10 @@ createApp({
         }
     },
     methods: {
+
+        // splashPage() {
+
+        // },
 
         changeActiveContact(index) {
 
@@ -204,15 +209,20 @@ createApp({
 
         addMessage() {
 
-            if (this.newMessage.length != 0 && this.newMessage.trim()){
+            if (this.newMessage.length != 0 && this.newMessage.trim()){  
+
                 // Add the text written inside the input field
                 this.activeContact.messages.push({date: new Date().toLocaleString("it-IT"),
                                                   message: this.newMessage, 
                                                   status: 'sent'}),
     
+                  
+
                 // I delete the contents of the input field
                 this.newMessage = "";
     
+                
+
                 setTimeout(() => {
                     let randomNumber = Math.floor(Math.random() * this.randomAnswer.length);
 
@@ -221,7 +231,25 @@ createApp({
                                                       status: 'received'})
                 }, 1000)
 
+                this.isWriting = false;
             }
+
+        },
+
+        addText() {
+
+            if (this.newMessage.length != 0 && this.newMessage.trim()){
+
+                if(this.newMessage.length === 0) {
+                    this.newMessage = "";
+                    this.isWriting = false;
+                } else { 
+                    this.isWriting = true;
+                }
+                
+            }
+
+            return this.newMessage.length === 0 ? `fa-solid fa-microphone` : `fa-solid fa-paper-plane`;
 
         },
 
@@ -229,7 +257,7 @@ createApp({
            
             if (this.newContact.length != 0 && this.newContact.trim()){
                 this.contacts.push({name: this.newContact, 
-                                    avatar: './img/avatar_8.jpg',
+                                    avatar: './img/a.jpg',
                                     visible: true,
                                     messages: [
                                         {
@@ -241,7 +269,14 @@ createApp({
                 this.newContact = "";
             }
 
-        }
+        },
+
+        deleteMessage(activeContact, messageIndex) {
+            
+            // delete the element from the message array that corresponds to the index reported in the parameter
+            activeContact.messages.splice(messageIndex, 1);
+
+        },
 
     },
     mounted() {

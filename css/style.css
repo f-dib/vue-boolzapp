@@ -161,6 +161,19 @@
     color: #999;
 }
 
+.my_chevron {
+    position: absolute;
+    right: 0px;
+    top: 10px;
+
+    opacity: 0;
+}
+
+.message:hover .my_chevron{
+    opacity: 1;
+    transition: all 0.3s;
+}
+
 .message.sent {
     align-self: flex-end;
 }
