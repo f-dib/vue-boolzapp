@@ -106,19 +106,22 @@
                         
                         <div class="container">
                             <div v-for="(currentMessage, index) in activeContact.messages" class="message" :class="currentMessage.status">
-                                <div class="text pe-4">
-                                    {{ currentMessage.message }}
-                                </div>
-                                <div class="time">
-                                    {{ time(currentMessage.date) }}
-                                </div>
-                                <div class="dropdown my_chevron">
-                                    <button class="btn fa_color2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-chevron-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu p-1">
-                                      <li><button @click="deleteMessage(activeContact, index)" class="btn">Elimina Messaggio</button></li>
-                                    </ul>
+                                
+                                <div>
+                                    <div class="text pe-4">
+                                        {{ currentMessage.message }}
+                                    </div>
+                                    <div class="time">
+                                        {{ time(currentMessage.date) }}
+                                    </div>
+                                    <div class="dropdown my_chevron">
+                                        <button class="btn fa_color2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu p-1">
+                                            <li><button @click="deleteMessage(activeContact, index)" class="btn">Elimina Messaggio</button></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>                

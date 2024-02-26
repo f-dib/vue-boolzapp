@@ -211,12 +211,15 @@ createApp({
 
             if (this.newMessage.length != 0 && this.newMessage.trim()){  
 
+                const actualIndex = this.activeContact.messages;
+
                 // Add the text written inside the input field
-                this.activeContact.messages.push({date: new Date().toLocaleString("it-IT"),
+                actualIndex.push({date: new Date().toLocaleString("it-IT"),
                                                   message: this.newMessage, 
-                                                  status: 'sent'}),
+                                                  status: 'sent'});
     
                   
+
 
                 // I delete the contents of the input field
                 this.newMessage = "";
@@ -226,10 +229,10 @@ createApp({
                 setTimeout(() => {
                     let randomNumber = Math.floor(Math.random() * this.randomAnswer.length);
 
-                    this.activeContact.messages.push({date: new Date().toLocaleString("it-IT"),
+                    actualIndex.push({date: new Date().toLocaleString("it-IT"),
                                                       message: this.randomAnswer[randomNumber], 
                                                       status: 'received'})
-                }, 1000)
+                }, 3000)
 
                 this.isWriting = false;
             }
@@ -241,7 +244,6 @@ createApp({
             if (this.newMessage.length != 0 && this.newMessage.trim()){
 
                 if(this.newMessage.length === 0) {
-                    this.newMessage = "";
                     this.isWriting = false;
                 } else { 
                     this.isWriting = true;
