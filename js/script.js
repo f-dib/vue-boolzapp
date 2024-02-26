@@ -299,6 +299,7 @@ createApp({
         },
 
         goToBottom() {
+            // modo per selezionare l'elemento tramite il suo riferimento $refs
             const targetRef = this.$refs.single_chat;
             this.$nextTick(() => {
               targetRef.scrollTo(
@@ -309,7 +310,7 @@ createApp({
                 }
               );
             });
-          }
+        }
 
     },
     mounted() {

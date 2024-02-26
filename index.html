@@ -44,9 +44,9 @@
                         <div class="top px-3">
                             <div class="d-flex align-items-center gap-2">
                                 <div class="avatar"><img class="img-fluid" src="./img/avatar_2.jpg" alt=""></div>
-                                <strong class="name">Federico</strong>
+                                <strong class="name">User</strong>
                             </div>
-                            <div class="d-flex align-items-center gap-4 fa_color2">
+                            <div class="d-flex align-items-center gap-lg-4 fa_color2">
                                 <div @click="isDark">
                                     <i class="fa-solid fa-circle-half-stroke fa-lg"></i>
                                 </div>
@@ -72,7 +72,7 @@
                         <div class="notifications_section px-3">
                             <div class="bell"><i class="fa-regular fa-bell-slash fa-xl"></i></div>
                             <div>
-                                <p class="m-0">Ricevi notifiche di nuovi messaggi</p>
+                                <p class="m-0 small">Ricevi notifiche di nuovi messaggi</p>
                                 <p class="m-0"><a href="#" class="text-secondary link-underline-secondary small">Attiva notifiche desktop</a></p>
                             </div>
                         </div>
@@ -87,8 +87,8 @@
                         <div class="chats_section">
                             <div v-for="(currentChat, index) in filteredChat" class="chat px-3 py-2" :class="currentChat == activeContact ? 'active' : ''" @click="changeActiveContact(index)">
                                 <div class="d-flex align-items-center gap-2">
-                                    <div class="avatar"><img class="img-fluid" :src="currentChat.avatar" alt=""></div>
-                                    <div>
+                                    <div class="avatar overflow-hidden"><img class="my_size_img" :src="currentChat.avatar" alt=""></div>
+                                    <div class="my_chat_height">
                                         <div class="name">{{ currentChat.name }}</div>
                                         <div v-if="currentChat.messages.length > 0">
                                             <p class="m-0 fa_color2 small">{{ currentChat.messages[currentChat.messages.length - 1].message }}</p>
