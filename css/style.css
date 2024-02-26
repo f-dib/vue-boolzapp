@@ -255,6 +255,11 @@
     background-color: #1e2428;
 }
 
+.my_dark .my_bar_bg{
+    color: white;
+    background-color: #33383b;
+}
+
 .my_w {
     width: 90%;
 }

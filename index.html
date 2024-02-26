@@ -79,8 +79,8 @@
                         
                         <div class="search_bar p-2">
                             <div class="input-group">
-                                <span class="input-group-text bg-white px-4 fa_color" id="inputGroup-sizing-default"><i class="fa-solid fa-magnifying-glass"></i></span>
-                                <input v-model="searchChat" type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text px-4 fa_color my_bar_bg" id="inputGroup-sizing-default"><i class="fa-solid fa-magnifying-glass"></i></span>
+                                <input v-model="searchChat" type="text" class="form-control my_bar_bg" placeholder="Cerca o inizia una nuova chat" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                               </div>
                         </div>
                         
@@ -132,7 +132,7 @@
                             </div>
                         </div>
                         
-                        <div class="single_chat p-4">
+                        <div class="single_chat p-4" ref="single_chat">
                             
                             <div class="container">
                                 <div v-for="(currentMessage, index) in activeContact.messages" class="message" :class="currentMessage.status">                                   
@@ -156,7 +156,7 @@
                         
                         <div class="text_bar fa_color">
                             <div><i class="fa-regular fa-face-smile"></i></div>
-                            <input v-model="newMessage" class="form-control my_w" type="text" placeholder="Scrivi un messaggio" aria-label="default input example" @keyup.enter="addMessage">
+                            <input v-model="newMessage" class="form-control my_bar_bg my_w" type="text" placeholder="Scrivi un messaggio" aria-label="default input example" @keyup.enter="addMessage">
                             <div>
                                 <i :class="addText()" @click="addMessage"></i>
                             </div>

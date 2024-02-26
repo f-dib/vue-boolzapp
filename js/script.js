@@ -224,7 +224,7 @@ createApp({
                 // I delete the contents of the input field
                 this.newMessage = "";
     
-                
+                this.goToBottom();
 
                 setTimeout(() => {
                     let randomNumber = Math.floor(Math.random() * this.randomAnswer.length);
@@ -232,6 +232,8 @@ createApp({
                     actualIndex.push({date: new Date().toLocaleString("it-IT"),
                                                       message: this.randomAnswer[randomNumber], 
                                                       status: 'received'})
+
+                    this.goToBottom();
                 }, 3000)
 
                 this.isWriting = false;
@@ -294,7 +296,20 @@ createApp({
 
         isDark(){
             document.documentElement.classList.toggle("my_dark");
-        }
+        },
+
+        goToBottom() {
+            const targetRef = this.$refs.single_chat;
+            this.$nextTick(() => {
+              targetRef.scrollTo(
+                {
+                  top: targetRef.scrollHeight,
+                  left: 0,
+                  behavior: "smooth"
+                }
+              );
+            });
+          }
 
     },
     mounted() {
