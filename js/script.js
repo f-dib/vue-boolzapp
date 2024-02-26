@@ -285,9 +285,12 @@ createApp({
 
             if(chatIndex > -1) {
                 this.contacts.splice(chatIndex, 1);
-                this.activeContact = {};
-            }
-            
+                if (this.contacts.length > 0) {
+                    this.activeContact = this.contacts[chatIndex];
+                } else {
+                    this.activeContact = {};
+                }
+            }      
         }
 
     },
@@ -295,7 +298,7 @@ createApp({
 
         setTimeout(() => {
             this.isLoading = false;
-          }, 2000);
+          }, 1000);
 
         this.activeContact = this.contacts[0]
 
