@@ -21,10 +21,18 @@
     background-color: #009688;
 }
 
+.my_dark .bg_green {
+    background-color: #066162;
+}
+
 .bg_gray{
     height: 85vh;
 
     background-color: #d9dbd6;
+}
+
+.my_dark .bg_gray {
+    background-color: black;
 }
 
 .my_position {
@@ -43,11 +51,19 @@
     display: flex;
 }
 
+.my_dark .my_position{
+    background-color: #101d24;
+}
+
 .side_left{
     width: 35%;
     height: 100%;
 
     border-right: 1px solid #c6bebe;
+}
+
+.my_dark .side_left {
+    border-right: 1px solid #555555;
 }
 
 .top {
@@ -58,6 +74,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center; 
+}
+
+.my_dark .top {
+    color: white;
+    background-color: #1e2428;
 }
 
 .avatar {
@@ -79,6 +100,11 @@
     gap: 5px;
 }
 
+.my_dark .notifications_section {
+    color: white;
+    background-color: #066162;
+}
+
 .bell {
     width: 60px;
     height: 60px;
@@ -91,11 +117,19 @@
     align-items: center;
 }
 
+.my_dark .bell {
+    color: #066162;
+}
+
 .search_bar {
     width: 100%;
     height: 50px;
 
     background-color: #fafafa;
+}
+
+.my_dark .search_bar {
+    background-color: #1e2428;
 }
 
 .chats_section {
@@ -111,6 +145,11 @@
     justify-content: space-between;
     border-bottom: 1px solid #e9ebeb;
     cursor: pointer;
+}
+
+.my_dark .chat {
+    color: white;
+    border-bottom: 1px solid #555555;
 }
 
 .side_right {
@@ -130,6 +169,10 @@
     overflow: auto;
 
     background-image: url(../img/mine.jpg);
+}
+
+.my_dark .single_chat {
+    background-image: url(../img/minedark.jpg);
 }
 
 .container {
@@ -155,6 +198,11 @@
     background-color: #d5f9ba;
 
     padding: 18px 16px;
+}
+
+.my_dark .message {
+    color: white;
+    background-color: #066162;
 }
 
 .message .time {
@@ -188,6 +236,10 @@
     background-color: white;
 }
 
+.my_dark .message.received{
+    background-color: #252d30;
+}
+
 .text_bar {
     width: 100%;
     height: 70px;
@@ -197,6 +249,10 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.my_dark .text_bar {
+    background-color: #1e2428;
 }
 
 .my_w {

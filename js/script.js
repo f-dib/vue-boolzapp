@@ -290,6 +290,10 @@ createApp({
                     this.activeContact = {};
                 }
             }      
+        },
+
+        isDark(){
+            document.documentElement.classList.toggle("my_dark");
         }
 
     },
