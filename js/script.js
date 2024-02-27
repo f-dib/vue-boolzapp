@@ -1,5 +1,3 @@
-// const creatApp = Vue.creatApp;
-// stessa cosa di scrivere: -->
 const { createApp } = Vue
 
 createApp({
@@ -192,13 +190,24 @@ createApp({
     },
     methods: {
 
+        // 
+        // Al click sulla singola chat prendo l'indice presente nell'oggetto 
+
         changeActiveContact(index) {
 
             const indx = this.contacts.indexOf(this.filteredChat[index]);
             this.activeContact = this.contacts[indx];
+            
+            // 
+            // Una volta effettuato il click setto il booleano presente per la visualizzazione della pagina di benvenuto su falso
+            // in maniera tale da che tramite il v-if possa sostituire la visualizzazione di questo elemento con la pagina della chat
+
             this.isWelcome = false;
 
         },
+
+        // 
+        // Prendo la stringa contenente la data e la formatto per ottenere solo ore e minuti
 
         time (data){
 
@@ -207,13 +216,26 @@ createApp({
 
         },
 
+
+        // 
+        // Al click invio un messaggio e dopo un secondo ottengo una risposta
+
         addMessage() {
+
+            // 
+            // Controllo che non permette l'invio di messaggi vuoti o testi composti di soli spazi
 
             if (this.newMessage.length != 0 && this.newMessage.trim()){  
 
+                // 
+                // Inserisco l'indice in una costante cosi che una volta cambiata chat il valore 
+                // selezionato resti memorizzato è risponda alla chat corretta
+
                 const actualIndex = this.activeContact.messages;
 
-                // Add the text written inside the input field
+                // 
+                // Pusho nell'array l'oggetto con il messaggio presente nel campo di testo
+
                 actualIndex.push({date: new Date().toLocaleString("it-IT"),
                                                   message: this.newMessage, 
                                                   status: 'sent'});
@@ -221,10 +243,16 @@ createApp({
                   
 
 
-                // I delete the contents of the input field
+                // 
+                // Svuoto il testo presente nel campo di input
+
                 this.newMessage = "";
     
                 this.goToBottom();
+
+
+                // 
+                // Setto un timeout di risposta di un secondo in cui mi pushera una oggetto random contenete un messaggio di risposta
 
                 setTimeout(() => {
                     let randomNumber = Math.floor(Math.random() * this.randomAnswer.length);
@@ -234,12 +262,15 @@ createApp({
                                                       status: 'received'})
 
                     this.goToBottom();
-                }, 3000)
+                }, 1000)
 
-                this.isWriting = false;
             }
 
         },
+
+
+        // 
+        // Controllo per riscontrare se è presente del testo nel campo di input e cambiare l'icona da microfono a invio
 
         addText() {
 
@@ -257,63 +288,126 @@ createApp({
 
         },
 
+
+        // 
+        // Aggiunta di un contatto alla sezione delle chat 
+
         addContact() {
            
+            // 
+            // Controllo che non permette l'invio di messaggi vuoti o testi composti di soli spazi
+
             if (this.newContact.length != 0 && this.newContact.trim()){
+                
+                // 
+                // Pusho oggetto contente informazioni sul nuovo contatto
+
                 this.contacts.push({name: this.newContact, 
                                     avatar: './img/a.jpg',
                                     visible: true,
                                     messages: []}),
+
+                // 
+                // Svuoto il campo di input
 
                 this.newContact = "";
             }
 
         },
 
+
+        // 
+        // Funzione per eliminare un messaggio
+
         deleteMessage(activeContact, messageIndex) {
             
-            // delete the element from the message array that corresponds to the index reported in the parameter
+            // Delete the element from the message array that corresponds to the index reported in the parameter
+            // Cancello l'elemento dall'array dei messaggi al parametro corrispettivo dell'index
+
             activeContact.messages.splice(messageIndex, 1);
 
         },
 
+
+        // Funzione per eliminare tutti i messaggi
+
         deleteAllMessages(activeContact){
+
+            // 
+            // Cancello tutto l'array dei messaggi
+
             activeContact.messages.splice(0, activeContact.messages.length)
         },
 
+        // 
+        // Funzione che cancella il contatto
+
         deleteContact(activeContact) {
+
+            // 
+            // Salvo in una costante l'index dei contatti attivi
+
             const chatIndex = this.contacts.indexOf(activeContact);
 
             if(chatIndex > -1) {
+
+                // 
+                // Rimuovo dall'indice il contatto attivo
+
                 this.contacts.splice(chatIndex, 1);
+
+                // 
+                // Controllo che se la lunghezza dell'array è maggiore di zero  
+                // mi mostri una volta cancellato il contatto la chat successiva
+
                 if (this.contacts.length > 0) {
                     this.activeContact = this.contacts[chatIndex];
                 } else {
+
+                    // 
+                    // In caso l'array sia vuoto mi mostra una pagina vuota 
+
                     this.activeContact = {};
                 }
             }      
         },
 
+        // 
+        // Funzione toggle collegata all'html che mi permette di attivare la dark mode
+
         isDark(){
             document.documentElement.classList.toggle("my_dark");
         },
 
+
+        // 
+        // Funzione che mi permette all'invio o all'arrivo di ogni messaggio di scrollare la pagina e renderlo visibile
+
         goToBottom() {
-            // modo per selezionare l'elemento tramite il suo riferimento $refs
+            
+            // 
+            // modo per selezionare l'elemento tramite il suo riferimento $refs ed inserirlo in una costante
+            
             const targetRef = this.$refs.single_chat;
+            
             this.$nextTick(() => {
-              targetRef.scrollTo(
+              
+                targetRef.scrollTo(
                 {
                   top: targetRef.scrollHeight,
                   left: 0,
                   behavior: "smooth"
                 }
               );
+
             });
         }
 
     },
     mounted() {
+
+        // 
+        // Timer che mi permette di visualizzare per un secondo la loading page
 
         setTimeout(() => {
             this.isLoading = false;
@@ -321,8 +415,15 @@ createApp({
    
     },
     computed: {
+
+        // 
+        // Funzione che mi permette di filtrare i contatti presenti nell'oggetto contacts
+
         filteredChat() {
             return this.contacts.filter(contact => {
+
+            // 
+            // Mi restituisce i contatti che includono e a cui combaciano 1 a 1 le lettere presenti nel campo di input
 
             return contact.name.toLowerCase().includes(this.searchChat.toLowerCase())
           });
