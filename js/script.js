@@ -190,7 +190,7 @@ createApp({
     },
     methods: {
 
-        // 
+        // When I click on the single chat I get the index present in the object
         // Al click sulla singola chat prendo l'indice presente nell'oggetto 
 
         changeActiveContact(index) {
@@ -198,7 +198,9 @@ createApp({
             const indx = this.contacts.indexOf(this.filteredChat[index]);
             this.activeContact = this.contacts[indx];
             
-            // 
+            // Once clicked I set the boolean present to display the welcome page on false
+            // in such a way that using the v-if you can replace the display of this element with the chat page
+            
             // Una volta effettuato il click setto il booleano presente per la visualizzazione della pagina di benvenuto su falso
             // in maniera tale da che tramite il v-if possa sostituire la visualizzazione di questo elemento con la pagina della chat
 
@@ -206,7 +208,7 @@ createApp({
 
         },
 
-        // 
+        // I take the string containing the date and format it to get just hours and minutes
         // Prendo la stringa contenente la data e la formatto per ottenere solo ore e minuti
 
         time (data){
@@ -217,23 +219,25 @@ createApp({
         },
 
 
-        // 
+        // When I click I send a message and after a second I get a response
         // Al click invio un messaggio e dopo un secondo ottengo una risposta
 
         addMessage() {
 
-            // 
+            // Control that does not allow the sending of empty messages or texts consisting only of spaces
             // Controllo che non permette l'invio di messaggi vuoti o testi composti di soli spazi
 
             if (this.newMessage.length != 0 && this.newMessage.trim()){  
 
-                // 
+                // I insert the index into a constant so that once the value is changed chat
+                // selected remains stored and replies to the correct chat
+                
                 // Inserisco l'indice in una costante cosi che una volta cambiata chat il valore 
                 // selezionato resti memorizzato è risponda alla chat corretta
 
                 const actualIndex = this.activeContact.messages;
 
-                // 
+                // I push the object with the message present in the text field into the array
                 // Pusho nell'array l'oggetto con il messaggio presente nel campo di testo
 
                 actualIndex.push({date: new Date().toLocaleString("it-IT"),
@@ -243,7 +247,7 @@ createApp({
                   
 
 
-                // 
+                // I empty the text in the input field
                 // Svuoto il testo presente nel campo di input
 
                 this.newMessage = "";
@@ -251,7 +255,7 @@ createApp({
                 this.goToBottom();
 
 
-                // 
+                // I set a response timeout of one second in which it will push me a random object containing a response message
                 // Setto un timeout di risposta di un secondo in cui mi pushera una oggetto random contenete un messaggio di risposta
 
                 setTimeout(() => {
@@ -269,7 +273,7 @@ createApp({
         },
 
 
-        // 
+        // I check to see if there is any text in the input field and change the icon from microphone to send
         // Controllo per riscontrare se è presente del testo nel campo di input e cambiare l'icona da microfono a invio
 
         addText() {
@@ -289,17 +293,17 @@ createApp({
         },
 
 
-        // 
+        // Adding a contact to the chat section
         // Aggiunta di un contatto alla sezione delle chat 
 
         addContact() {
            
-            // 
+            // Control that does not allow the sending of empty messages or texts consisting only of spaces
             // Controllo che non permette l'invio di messaggi vuoti o testi composti di soli spazi
 
             if (this.newContact.length != 0 && this.newContact.trim()){
                 
-                // 
+                // Pusho object containing information about the new contact
                 // Pusho oggetto contente informazioni sul nuovo contatto
 
                 this.contacts.push({name: this.newContact, 
@@ -307,8 +311,8 @@ createApp({
                                     visible: true,
                                     messages: []}),
 
-                // 
-                // Svuoto il campo di input
+                // I empty the text in the input field
+                // Svuoto il testo presente nel campo di input
 
                 this.newContact = "";
             }
@@ -316,7 +320,7 @@ createApp({
         },
 
 
-        // 
+        // Function to delete a message
         // Funzione per eliminare un messaggio
 
         deleteMessage(activeContact, messageIndex) {
@@ -329,6 +333,7 @@ createApp({
         },
 
 
+        // Function to delete all messages
         // Funzione per eliminare tutti i messaggi
 
         deleteAllMessages(activeContact){
@@ -339,24 +344,25 @@ createApp({
             activeContact.messages.splice(0, activeContact.messages.length)
         },
 
-        // 
+        // I delete the entire message array
         // Funzione che cancella il contatto
 
         deleteContact(activeContact) {
 
-            // 
+            // Save the index of active contacts in a constant
             // Salvo in una costante l'index dei contatti attivi
 
             const chatIndex = this.contacts.indexOf(activeContact);
 
             if(chatIndex > -1) {
 
-                // 
+                // I remove the active contact from the index
                 // Rimuovo dall'indice il contatto attivo
 
                 this.contacts.splice(chatIndex, 1);
 
-                // 
+                // I check if the length of the array is greater than zero
+                // show me the next chat once the contact has been deleted
                 // Controllo che se la lunghezza dell'array è maggiore di zero  
                 // mi mostri una volta cancellato il contatto la chat successiva
 
@@ -364,7 +370,7 @@ createApp({
                     this.activeContact = this.contacts[chatIndex];
                 } else {
 
-                    // 
+                    // If the array is empty it shows me an empty page
                     // In caso l'array sia vuoto mi mostra una pagina vuota 
 
                     this.activeContact = {};
@@ -372,7 +378,7 @@ createApp({
             }      
         },
 
-        // 
+        // Toggle function linked to the html that allows me to activate dark mode
         // Funzione toggle collegata all'html che mi permette di attivare la dark mode
 
         isDark(){
@@ -380,13 +386,13 @@ createApp({
         },
 
 
-        // 
+        // Function that allows me to scroll the page when sending or arriving each message and making it visible
         // Funzione che mi permette all'invio o all'arrivo di ogni messaggio di scrollare la pagina e renderlo visibile
 
         goToBottom() {
             
-            // 
-            // modo per selezionare l'elemento tramite il suo riferimento $refs ed inserirlo in una costante
+            // I select the element by its $refs reference and insert it into a constant
+            // Seleziono l'elemento tramite il suo riferimento $refs ed lo inserisco in una costante
             
             const targetRef = this.$refs.single_chat;
             
@@ -406,7 +412,7 @@ createApp({
     },
     mounted() {
 
-        // 
+        // Timer that allows me to view the loading page for one second
         // Timer che mi permette di visualizzare per un secondo la loading page
 
         setTimeout(() => {
@@ -416,13 +422,13 @@ createApp({
     },
     computed: {
 
-        // 
+        // Function that allows me to filter the contacts present in the contacts object
         // Funzione che mi permette di filtrare i contatti presenti nell'oggetto contacts
 
         filteredChat() {
             return this.contacts.filter(contact => {
 
-            // 
+            // It returns me the contacts that include and match 1 to 1 the letters in the input field
             // Mi restituisce i contatti che includono e a cui combaciano 1 a 1 le lettere presenti nel campo di input
 
             return contact.name.toLowerCase().includes(this.searchChat.toLowerCase())
