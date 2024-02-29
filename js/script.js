@@ -181,7 +181,7 @@ createApp({
                 "So cosa hai fatto la scorsa estate"
             ],
 
-
+            isMobile: false,
             newContact: '',
             isLoading: true,
             isWelcome: true,
@@ -205,6 +205,19 @@ createApp({
             // in maniera tale da che tramite il v-if possa sostituire la visualizzazione di questo elemento con la pagina della chat
 
             this.isWelcome = false;
+
+            if (window.innerWidth < 768) {
+
+                console.log(this.activeContact);
+                document.querySelector("#side_left").style.display = "none";
+
+                this.isMobile = !this.isMobile;
+                // document.getElementById("side_right").style.display = "block";
+                // document.getElementById("side_right").style.width = "100%";
+                // this.isWelcome = false;
+                // const indx = this.contacts.indexOf(this.filteredChat[index]);
+                // this.activeContact = this.contacts[indx];
+            }
 
         },
 
